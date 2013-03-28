@@ -875,7 +875,7 @@ $.ui.plugin.add("resizable", "alsoResize", {
 			_alsoResize = function (exp, c) {
 				$(exp).each(function() {
 					var el = $(this), start = $(this).data("ui-resizable-alsoresize"), style = {},
-						css = c && c.length ? c : el.parents(ui.originalElement[0]).length ? ["width", "height"] : ["width", "height", "top", "left"];
+						css = c && c.length ? c : el.parents(ui.originalElement[0]).length ? [] : ["top", "left"];
 
 					$.each(css, function (i, prop) {
 						var sum = (start[prop]||0) + (delta[prop]||0);
@@ -885,6 +885,8 @@ $.ui.plugin.add("resizable", "alsoResize", {
 					});
 
 					el.css(style);
+                    el.width((start["width"]||0) + (delta["width"]||0));
+                    el.height((start["height"]||0) + (delta["height"]||0));
 				});
 			};
 

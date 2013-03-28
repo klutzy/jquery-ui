@@ -374,13 +374,14 @@ $.widget("ui.resizable", $.ui.mouse, {
 		if (this.position.left !== prevLeft) {
 			props.left = this.position.left + "px";
 		}
+		el.css(props);
+
 		if (this.size.width !== prevWidth) {
-			props.width = this.size.width + "px";
+            el.width(this.size.width);
 		}
 		if (this.size.height !== prevHeight) {
-			props.height = this.size.height + "px";
+            el.height(this.size.height);
 		}
-		el.css(props);
 
 		if (!this._helper && this._proportionallyResizeElements.length) {
 			this._proportionallyResize();
